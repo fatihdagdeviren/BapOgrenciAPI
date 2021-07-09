@@ -1,0 +1,169 @@
+basePath: /api/v1
+definitions:
+  Models.Ogrenci:
+    properties:
+      ad:
+        type: string
+      birimID:
+        type: string
+      cepTel:
+        type: string
+      email:
+        type: string
+      ogrenciNo:
+        type: string
+      ogretimDuzeyi:
+        type: string
+      ogretimDuzeyiAciklama:
+        type: string
+      programID:
+        type: string
+      soyad:
+        type: string
+      ustBirimID:
+        type: string
+    type: object
+  Models.OgrenciSrvcResult:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/Models.Ogrenci'
+        type: array
+      message:
+        type: string
+      result:
+        type: boolean
+    type: object
+  Models.Organizasyon:
+    properties:
+      ad:
+        type: string
+      id:
+        type: string
+    type: object
+  Models.OrganizasyonSrvcResult:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/Models.Organizasyon'
+        type: array
+      message:
+        type: string
+      result:
+        type: boolean
+    type: object
+  Models.Personel:
+    properties:
+      adi:
+        type: string
+      aktif:
+        type: string
+      cinsiyet:
+        type: string
+      derece:
+        type: string
+      dogumYeri:
+        type: string
+      ekGosterge:
+        type: string
+      eposta:
+        type: string
+      girisTarihi:
+        type: string
+      gorevAnaBilimDali:
+        type: string
+      gorevBirim:
+        type: string
+      gorevBolum:
+        type: string
+      kadroAnaBilimDali:
+        type: string
+      kadroBirim:
+        type: string
+      kadroBolum:
+        type: string
+      kadroBosalmaTarihi:
+        type: string
+      kadrounvani:
+        type: string
+      sicilNo:
+        type: string
+      soyadi:
+        type: string
+      tcKimlikNo:
+        type: string
+      telefon:
+        type: string
+      unvan:
+        type: string
+    type: object
+  Models.PersonelSrvcResult:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/Models.Personel'
+        type: array
+      message:
+        type: string
+      result:
+        type: boolean
+    type: object
+host: localhost:8011
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: Integration için Data Sağlayan servis
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Bap Integration API
+  version: "1.0"
+paths:
+  /personel/getOrganizationFromPersonel:
+    get:
+      consumes:
+      - application/json
+      description: GetOrganizationFromPersonel
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.OrganizasyonSrvcResult'
+      summary: GetOrganizationFromPersonel
+  /personel/getPersonels:
+    get:
+      consumes:
+      - application/json
+      description: Get All Personels
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.PersonelSrvcResult'
+      summary: Get Personels
+  /student/getOrganizationFromStudent:
+    get:
+      consumes:
+      - application/json
+      description: GetOrganizationFromStudent
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.OrganizasyonSrvcResult'
+      summary: GetOrganizationFromStudent
+  /student/getStudents:
+    get:
+      consumes:
+      - application/json
+      description: Get All Students
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Models.OgrenciSrvcResult'
+      summary: Get Students
+swagger: "2.0"
